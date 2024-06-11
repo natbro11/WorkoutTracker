@@ -1,5 +1,4 @@
 *.db
-bin
 
 # Ignore class files
 *.class
