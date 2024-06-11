@@ -15,7 +15,7 @@ public class WorkoutTracker {
 			e.printStackTrace();
 		}
     	
-    	System.out.println(sl.getStrengthLevelDescription('M', 5, 'S', 170, 775));
+    	System.out.println(sl.getStrengthLevelDescription('M', 5, 'S', 170, 224));
     	
     	
     	

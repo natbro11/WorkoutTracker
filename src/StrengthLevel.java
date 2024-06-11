@@ -162,7 +162,7 @@ public class StrengthLevel {
 	}
 	
 	// Utility. Simply prints a 2D int[]
-    public void print2DIntArray(int[][] ar) {
+    private void print2DIntArray(int[][] ar) {
     	for(int[] i : ar) {
     		for(int j : i) {
     			System.out.print("" + j + " ");
