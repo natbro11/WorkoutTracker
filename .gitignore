@@ -1,0 +1,33 @@
+*.db
+bin
+
+# Ignore class files
+*.class
+
+# Ignore package files
+*.jar
+*.war
+
+# Ignore Eclipse files
+.settings/
+.project
+.classpath
+
+# Ignore build directories
+bin/
+build/
+
+# Ignore Maven/Gradle files
+target/
+*.log
+
+# Ignore IntelliJ IDEA files
+.idea/
+*.iml
+*.iws
+
+# Ignore Mac OS specific files
+.DS_Store
+
+# Ignore Windows specific files
+Thumbs.db
