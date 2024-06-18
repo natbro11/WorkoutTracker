@@ -1,4 +1,6 @@
-import java.io.FileNotFoundException;
+
+import java.util.Random;
+import java.util.Date;
 
 public class WorkoutTracker {
 
@@ -6,30 +8,21 @@ public class WorkoutTracker {
     	System.out.println("Starting Workout Tracker!");
     	DatabaseManager dbm = new DatabaseManager();
     	
-    	System.out.println(dbm.toStringBodyWeight());
+    	Random r = new Random();
+    	dbm.emptyBodyWeight();
     	
-    	dbm.insertWeightSet(1,2,165,5);
-    	dbm.insertWeightSet(1,2,170,5);
-    	dbm.insertWeightSet(1,2,185,5);
-    	dbm.insertWeightSet(1,2,190,5);
-    	dbm.insertWeightSet(1,2,195,5);
-    	dbm.insertCardioSet(1,2,165,5);
-    	dbm.insertCardioSet(1,2,170,5);
-    	dbm.insertCardioSet(1,2,185,5);
-    	dbm.insertCardioSet(1,2,190,5);
-    	dbm.insertCardioSet(1,2,195,5);
-    	
-    	System.out.println(dbm.toStringWeightSet());
-    	System.out.println(dbm.toStringCardioSet());
+    	for(int i = 0; i < 5; i++) {
+        	dbm.insertBodyWeight((float)r.nextGaussian(170.0, 5.0));
+        	sleep((int)r.nextGaussian(2000,250));
+    	}
     	
     	
-		try {
-			StrengthLevel sl = new StrengthLevel();
-			System.out.println(sl.getStrengthLevelDescription('M', 5, 'S', 170, 224));
-		}
-		catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
+    	TwoArray<Date,Float> tarr = dbm.getBodyWeightData();
+    	System.out.println(tarr.getX()[0]);
+    	
+    	for(Date d : tarr.getX()) {
+    		System.out.print(d.toString());
+    	}
     	
     	
     }

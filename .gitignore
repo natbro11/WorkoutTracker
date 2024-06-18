@@ -13,6 +13,7 @@
 .classpath
 
 # Ignore build directories
+charts/
 bin/
 lib/
 build/

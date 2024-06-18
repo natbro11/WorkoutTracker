@@ -5,8 +5,12 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.Connection;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Date;
 
 public class DatabaseManager {
 	private static final String DATABASE_URL = "jdbc:sqlite:workout.db";
@@ -152,7 +156,46 @@ public class DatabaseManager {
 	    return true;
 	}
 	
+	public TwoArray<Date,Float> getBodyWeightData() {
+	    List<Date> times = new ArrayList<>();
+	    List<Float> weights = new ArrayList<>();
+	    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	    try {
+	        Statement stmt = conn.createStatement();
+	        ResultSet rs = stmt.executeQuery("SELECT time, bodyweight FROM bodyweight;");
+	        while (rs.next()) {
+	            try {
+	                Date date = dateFormat.parse(rs.getString("time"));
+	                times.add(date);
+	                weights.add(rs.getFloat("bodyweight"));
+	            } 
+		        catch (ParseException e) {
+					System.out.println("Error parsing date: " + e.getMessage());
+					continue;
+	            }
+	        }
+	    } 
+	    catch (SQLException e) {
+	    	System.out.println("SQL Error: " + e.getMessage());
+	    }    
+	    return new TwoArray<>(times.toArray(new Date[0]),weights.toArray(new Float[0]));
+	}
 	
+	
+	
+	public void emptyBodyWeight() {
+		String sql = "DELETE FROM bodyweight;";
+        try (
+            	Statement stmt = conn.createStatement()) {
+            	int affectedRows = stmt.executeUpdate(sql);
+                System.out.println(affectedRows + " rows were deleted from the bodyweight table.");
+        }
+        catch (SQLException e) {
+        	
+        }
+    }
+	
+	// toString Functions
 	public String toStringBodyWeight() {
 		StringBuilder sb = new StringBuilder();
 		try {
@@ -250,8 +293,7 @@ public class DatabaseManager {
 		}
 		return sb.toString();
 	}
-	
-	
+
 	public String toString() {
     	StringBuilder sb = new StringBuilder();
     	List<String> tables = new ArrayList<>();
