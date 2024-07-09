@@ -11,7 +11,7 @@ public class TwoArray<X, Y> {
         return this.x;
     }
     public Y[] getY() {
-        return y;
+        return this.y;
     }
 }
 

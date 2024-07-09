@@ -22,7 +22,8 @@ public class DatabaseManager {
 	    this.insertDefaultData();
 	}	
 	
-	// Private Functions ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	// Initialization Functions -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	
 	// Connect to the database
 	private void connect() {
 		try {
@@ -32,6 +33,7 @@ public class DatabaseManager {
 			System.out.println(e.getMessage());
 		}
 	}
+	
 	// Create the required tables
 	private void createTables() {
 		String[] createTableStatements = {
@@ -42,8 +44,8 @@ public class DatabaseManager {
 			
 			"CREATE TABLE IF NOT EXISTS workout  (workout_id INTEGER PRIMARY KEY AUTOINCREMENT, time DATETIME DEFAULT CURRENT_TIMESTAMP);",
 			
-			"CREATE TABLE IF NOT EXISTS weightset (weightset_id INTEGER PRIMARY KEY AUTOINCREMENT, weight_id INTEGER, workout_id INTEGER, masslb FLOAT NOT NULL, reps INT NOT NULL, FOREIGN KEY (workout_id) REFERENCES workout(workout_id) ON DELETE CASCADE, FOREIGN KEY (weight_id) REFERENCES weight(weight_id) ON DELETE CASCADE);",
-			"CREATE TABLE IF NOT EXISTS cardioset (cardioset_id INTEGER PRIMARY KEY AUTOINCREMENT, cardio_id INTEGER, workout_id INTEGER, distmi FLOAT NOT NULL, secs INT NOT NULL, FOREIGN KEY (workout_id) REFERENCES workout(workout_id) ON DELETE CASCADE, FOREIGN KEY (cardio_id) REFERENCES cardio(cardio_id) ON DELETE CASCADE);"
+			"CREATE TABLE IF NOT EXISTS weightset (weightset_id INTEGER PRIMARY KEY AUTOINCREMENT, weight_id INTEGER, workout_id INTEGER, mass FLOAT NOT NULL, reps INT NOT NULL, FOREIGN KEY (workout_id) REFERENCES workout(workout_id) ON DELETE CASCADE, FOREIGN KEY (weight_id) REFERENCES weight(weight_id) ON DELETE CASCADE);",
+			"CREATE TABLE IF NOT EXISTS cardioset (cardioset_id INTEGER PRIMARY KEY AUTOINCREMENT, cardio_id INTEGER, workout_id INTEGER, dist FLOAT NOT NULL, secs INT NOT NULL, FOREIGN KEY (workout_id) REFERENCES workout(workout_id) ON DELETE CASCADE, FOREIGN KEY (cardio_id) REFERENCES cardio(cardio_id) ON DELETE CASCADE);"
 		};
 		try (Statement stmt = conn.createStatement()) {
 		    for (String sql : createTableStatements) {
@@ -54,6 +56,7 @@ public class DatabaseManager {
 	        System.out.println(e.getMessage());
 	    }
 	}
+	
 	// Initialize few common exercises
 	private void insertDefaultData() {
 		String[] insertStatements = {
@@ -76,8 +79,9 @@ public class DatabaseManager {
 		}
 	}
 	
-	// Public Functions --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	// Inserts a new record into the bodyweight table
+	// Insertion Functions ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	
+	// Inserts a new record into the bodyweight table. Each representing a single record of ones body weight
 	public boolean insertBodyWeight(float bodyweight) {
 	    String sql = "INSERT INTO bodyweight (bodyweight) VALUES (?)";
 	    try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -90,6 +94,8 @@ public class DatabaseManager {
         System.out.println(String.format("Inserted Into Table 'bodyweight' - Weight: %f",bodyweight));
 	    return true;
 	}
+	
+	// Inserts a new record into the weight table. Each representing a single type of weight lifting exercise
 	public boolean insertWeight(String name) {
 	    String sql = "INSERT INTO weight (weight_name) VALUES (?)";
 	    try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -102,6 +108,8 @@ public class DatabaseManager {
         System.out.println(String.format("Inserted Into Table 'weight' - Weight: %S",name));
 	    return true;
 	}
+	
+	// Inserts a new record into the cardio table. Each representing a single type of cardio exercise.
 	public boolean insertCardio(String name) {
 	    String sql = "INSERT INTO cardio (cardio_name) VALUES (?)";
 	    try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -114,6 +122,8 @@ public class DatabaseManager {
         System.out.println(String.format("Inserted Into Table 'cardio' - Cardio: %S",name));
 	    return true;
 	}
+	
+	// Inserts a new record into the workout table. Each representing "a trip to the gym". Individual exercise events will must reference a workout.
 	public boolean insertWorkout() {
 	    String sql = "INSERT INTO workout DEFAULT VALUES";
 	    try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -125,37 +135,44 @@ public class DatabaseManager {
         System.out.println(String.format("Inserted Into Table 'workout'"));
 	    return true;
 	}
-	public boolean insertWeightSet(int weight_id, int workout_id, float masslb, int reps) {
-	    String sql = "INSERT INTO weightset (weight_id,workout_id,masslb,reps) VALUES (?,?,?,?)";
+	
+	// Inserts a new record into the WeightSet table. Each representing a number of repetitions of a 'weight' exercise.
+	public boolean insertWeightSet(int weight_id, int workout_id, float mass, int reps) {
+	    String sql = "INSERT INTO weightset (weight_id,workout_id,mass,reps) VALUES (?,?,?,?)";
 	    try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
 	        pstmt.setInt(1,weight_id);
 	        pstmt.setInt(2,workout_id);
-	        pstmt.setFloat(3,masslb);
+	        pstmt.setFloat(3,mass);
 	        pstmt.setInt(4,reps);
 	        pstmt.executeUpdate();
 	    } catch (SQLException e) {
 	        System.out.println(e.getMessage());
 	        return false;
 	    }
-        System.out.println(String.format("Inserted Into Table 'weightset' - WeightID: %d, WorkoutID: %d, Mass: %f, Reps: %d",weight_id,workout_id,masslb,reps));
+        System.out.println(String.format("Inserted Into Table 'weightset' - WeightID: %d, WorkoutID: %d, Mass: %f, Reps: %d",weight_id,workout_id,mass,reps));
 	    return true;
 	}
-	public boolean insertCardioSet(int cardio_id, int workout_id, float distmi, int secs) {
-	    String sql = "INSERT INTO cardioset (cardio_id,workout_id,distmi,secs) VALUES (?,?,?,?)";
+	
+	// Inserts a new record into the CardioSet table. Each representing an amount of a 'cardio' exercise.
+	public boolean insertCardioSet(int cardio_id, int workout_id, float dist, int secs) {
+	    String sql = "INSERT INTO cardioset (cardio_id,workout_id,dist,secs) VALUES (?,?,?,?)";
 	    try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
 	        pstmt.setInt(1,cardio_id);
 	        pstmt.setInt(2,workout_id);
-	        pstmt.setFloat(3,distmi);
+	        pstmt.setFloat(3,dist);
 	        pstmt.setInt(4,secs);
 	        pstmt.executeUpdate();
 	    } catch (SQLException e) {
 	        System.out.println(e.getMessage());
 	        return false;
 	    }
-        System.out.println(String.format("Inserted Into Table 'cardioset' - CardioID: %d, WorkoutID: %d, DistMi: %f, Seconds: %d",cardio_id,workout_id,distmi,secs));
+        System.out.println(String.format("Inserted Into Table 'cardioset' - CardioID: %d, WorkoutID: %d, Dist: %f, Seconds: %d",cardio_id,workout_id,dist,secs));
 	    return true;
 	}
 	
+	
+	// Data Pull Functions ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	// Returns a TwoArray of Date and Floats representing body weights at various dates.
 	public TwoArray<Date,Float> getBodyWeightData() {
 	    List<Date> times = new ArrayList<>();
 	    List<Float> weights = new ArrayList<>();
@@ -182,7 +199,8 @@ public class DatabaseManager {
 	}
 	
 	
-	
+	// Deletion Function ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	// Deletes all record in the BodyWeight table
 	public void emptyBodyWeight() {
 		String sql = "DELETE FROM bodyweight;";
         try (
@@ -195,7 +213,7 @@ public class DatabaseManager {
         }
     }
 	
-	// toString Functions
+	// toString Functions -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	public String toStringBodyWeight() {
 		StringBuilder sb = new StringBuilder();
 		try {
@@ -266,9 +284,9 @@ public class DatabaseManager {
 				int weightset_id = rs.getInt("weightset_id");
 				int weight_id = rs.getInt("weight_id");
 				int workout_id = rs.getInt("workout_id");
-				float masslb = rs.getFloat("masslb");
+				float mass = rs.getFloat("mass");
 				int reps = rs.getInt("reps");
-				sb.append(String.format("WeightSetId: %d, WeightId: %d, WorkoutID: %d, MassLB: %.2f, Reps: %d\n",weightset_id,weight_id,workout_id,masslb,reps));
+				sb.append(String.format("WeightSetId: %d, WeightId: %d, WorkoutID: %d, Mass: %.2f, Reps: %d\n",weightset_id,weight_id,workout_id,mass,reps));
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -284,9 +302,9 @@ public class DatabaseManager {
 				int cardioset_id = rs.getInt("cardioset_id");
 				int cardio_id = rs.getInt("cardio_id");
 				int workout_id = rs.getInt("workout_id");
-				float distmi = rs.getFloat("distmi");
+				float dist = rs.getFloat("dist");
 				int secs = rs.getInt("secs");
-				sb.append(String.format("CardioSetId: %d, CardioId: %d, WorkoutID: %d, DistanceMiles: %.2f, Seconds: %d\n",cardioset_id,cardio_id,workout_id,distmi,secs));
+				sb.append(String.format("CardioSetId: %d, CardioId: %d, WorkoutID: %d, Distance: %.2f, Seconds: %d\n",cardioset_id,cardio_id,workout_id,dist,secs));
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
