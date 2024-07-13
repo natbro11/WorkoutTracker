@@ -1,4 +1,6 @@
 
+package main.java.com.drawingblanks.workouttracker;
+
 // imports
 import java.io.IOException;
 import java.io.BufferedReader;
@@ -161,8 +163,10 @@ public class StrengthLevel {
         return highIndex;
 	}
 	
+	
 	// Utility. Simply prints a 2D int[]
-    private void print2DIntArray(int[][] ar) {
+    @SuppressWarnings("unused")
+	private void print2DIntArray(int[][] ar) {
     	for(int[] i : ar) {
     		for(int j : i) {
     			System.out.print("" + j + " ");

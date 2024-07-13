@@ -1,3 +1,6 @@
+
+package main.java.com.drawingblanks.workouttracker;
+
 import org.knowm.xchart.XYChart;
 import org.knowm.xchart.XYChartBuilder;
 import org.knowm.xchart.style.lines.SeriesLines;
@@ -41,7 +44,7 @@ public class ChartGenerator {
 
 		// Save chart
 		try {
-			BitmapEncoder.saveBitmap(chart, "./charts/BodyWeight", BitmapFormat.PNG);
+			BitmapEncoder.saveBitmap(chart, "src/main/resources/charts/BodyWeight", BitmapFormat.PNG);
 		} 
 		catch (IOException e) {
 			e.printStackTrace();

@@ -1,8 +1,10 @@
 
+package main.java.com.drawingblanks.workouttracker;
+
 // Class stores 2 generic arrays for passing data between classes
 public class TwoArray<X, Y> {
-    private X[] x;
-    private Y[] y;
+    private final X[] x;
+    private final Y[] y;
     public TwoArray(X[] x, Y[] y) {
         this.x = x;
         this.y = y;
