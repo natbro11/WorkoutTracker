@@ -32,10 +32,10 @@ public class Main extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         FileMenu = new javax.swing.JMenu();
         NewDBMenuItem = new javax.swing.JMenuItem();
-        OpenDBMenuItem = new javax.swing.JMenuItem();
         BackupDBMenuItem = new javax.swing.JMenuItem();
         ExitMenuItem = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        EditMenu = new javax.swing.JMenu();
+        UserInfoMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,10 +49,12 @@ public class Main extends javax.swing.JFrame {
         });
         FileMenu.add(NewDBMenuItem);
 
-        OpenDBMenuItem.setText("Open Database");
-        FileMenu.add(OpenDBMenuItem);
-
         BackupDBMenuItem.setText("Backup Database");
+        BackupDBMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackupDBMenuItemActionPerformed(evt);
+            }
+        });
         FileMenu.add(BackupDBMenuItem);
 
         ExitMenuItem.setText("Exit");
@@ -65,8 +67,17 @@ public class Main extends javax.swing.JFrame {
 
         jMenuBar1.add(FileMenu);
 
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
+        EditMenu.setText("Edit");
+
+        UserInfoMenuItem.setText("User Info");
+        UserInfoMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UserInfoMenuItemActionPerformed(evt);
+            }
+        });
+        EditMenu.add(UserInfoMenuItem);
+
+        jMenuBar1.add(EditMenu);
 
         setJMenuBar(jMenuBar1);
 
@@ -92,6 +103,15 @@ public class Main extends javax.swing.JFrame {
     private void NewDBMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewDBMenuItemActionPerformed
         conn = DatabaseManager.getInstance();
     }//GEN-LAST:event_NewDBMenuItemActionPerformed
+
+    private void BackupDBMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackupDBMenuItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BackupDBMenuItemActionPerformed
+
+    private void UserInfoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UserInfoMenuItemActionPerformed
+        UserInfo editUser = new UserInfo();
+        editUser.show();
+    }//GEN-LAST:event_UserInfoMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -130,11 +150,11 @@ public class Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem BackupDBMenuItem;
+    private javax.swing.JMenu EditMenu;
     private javax.swing.JMenuItem ExitMenuItem;
     private javax.swing.JMenu FileMenu;
     private javax.swing.JMenuItem NewDBMenuItem;
-    private javax.swing.JMenuItem OpenDBMenuItem;
-    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuItem UserInfoMenuItem;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }
