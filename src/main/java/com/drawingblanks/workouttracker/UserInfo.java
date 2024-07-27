@@ -9,6 +9,8 @@ package com.drawingblanks.workouttracker;
  * @author matt
  */
 public class UserInfo extends javax.swing.JFrame {
+    
+    public Float userWeight;
 
     /**
      * Creates new form UserInfo
@@ -39,8 +41,18 @@ public class UserInfo extends javax.swing.JFrame {
         WeightTextField.setColumns(10);
 
         OkayButton.setText("Okay");
+        OkayButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OkayButtonActionPerformed(evt);
+            }
+        });
 
         CancelButton.setText("Cancel");
+        CancelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -73,6 +85,15 @@ public class UserInfo extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void OkayButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OkayButtonActionPerformed
+        userWeight = Float.parseFloat(WeightTextField.getText());
+        this.hide();
+    }//GEN-LAST:event_OkayButtonActionPerformed
+
+    private void CancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelButtonActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_CancelButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -107,6 +128,15 @@ public class UserInfo extends javax.swing.JFrame {
                 new UserInfo().setVisible(true);
             }
         });
+    }
+    
+    public void setTextField(Float data){
+        userWeight = data;
+        WeightTextField.setText(userWeight.toString());
+    }
+    
+    public Float getTextField(){
+        return userWeight;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
