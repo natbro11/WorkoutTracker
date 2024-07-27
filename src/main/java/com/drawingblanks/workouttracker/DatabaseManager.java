@@ -438,6 +438,20 @@ public class DatabaseManager {
 	    }    
 	    return new TwoArray<>(times.toArray(new Date[0]),weights.toArray(new Float[0]));
 	}
+        
+        public Float getLastBodyWeightData() {
+            Float result = 0.0f;
+            try {
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT MAX(time), body_weight FROM body_weight");
+                while(rs.next()){
+                    result = rs.getFloat("body_weight");
+                }
+            }catch(SQLException e){
+                System.out.println(e.getMessage());
+            }
+            return result;
+        }
 	
 	
 	// toString Functions -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
