@@ -36,6 +36,7 @@ public class ModifyCardio extends javax.swing.JFrame {
         CancelButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Modify Cardio");
 
         CardioExerciseLabel.setText("Exercise Name");
 

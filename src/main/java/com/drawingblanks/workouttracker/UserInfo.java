@@ -88,7 +88,7 @@ public class UserInfo extends javax.swing.JFrame {
 
     private void OkayButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OkayButtonActionPerformed
         userWeight = Float.parseFloat(WeightTextField.getText());
-        this.hide();
+        this.setVisible(false);
     }//GEN-LAST:event_OkayButtonActionPerformed
 
     private void CancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelButtonActionPerformed

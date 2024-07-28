@@ -44,6 +44,7 @@ public class Main extends javax.swing.JFrame {
         UserInfoMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("WorkoutTracker");
 
         AddWorkoutButton.setText("Add Workout");
         AddWorkoutButton.addActionListener(new java.awt.event.ActionListener() {
@@ -145,15 +146,7 @@ public class Main extends javax.swing.JFrame {
 
     private void UserInfoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UserInfoMenuItemActionPerformed
         UserInfo editUser = new UserInfo();
-        try {
-            Float currentValues = conn.getLastBodyWeightData();
-            editUser.setTextField(currentValues);
-        }catch(ArrayIndexOutOfBoundsException e){
-            ; // intentionally blank
-        }
-        editUser.show();
-        conn.insertBodyWeight(editUser.getTextField());
-        editUser.dispose();
+        editUser.setVisible(true);
     }//GEN-LAST:event_UserInfoMenuItemActionPerformed
 
     private void AddWorkoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddWorkoutButtonActionPerformed
