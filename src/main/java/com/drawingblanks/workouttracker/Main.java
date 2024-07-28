@@ -5,6 +5,8 @@
 package com.drawingblanks.workouttracker;
 
 import main.java.com.drawingblanks.workouttracker.DatabaseManager;
+import main.java.com.drawingblanks.workouttracker.TwoArray;
+import java.util.Date;
 
 /**
  *
@@ -29,9 +31,13 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        AddWorkoutButton = new javax.swing.JButton();
+        EditWorkoutButton = new javax.swing.JButton();
+        DeleteWorkoutButton = new javax.swing.JButton();
+        WorkoutScrollPane = new javax.swing.JScrollPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         FileMenu = new javax.swing.JMenu();
-        NewDBMenuItem = new javax.swing.JMenuItem();
+        ConnectDBMenuItem = new javax.swing.JMenuItem();
         BackupDBMenuItem = new javax.swing.JMenuItem();
         ExitMenuItem = new javax.swing.JMenuItem();
         EditMenu = new javax.swing.JMenu();
@@ -39,15 +45,26 @@ public class Main extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        FileMenu.setText("File");
-
-        NewDBMenuItem.setText("New Database");
-        NewDBMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        AddWorkoutButton.setText("Add Workout");
+        AddWorkoutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NewDBMenuItemActionPerformed(evt);
+                AddWorkoutButtonActionPerformed(evt);
             }
         });
-        FileMenu.add(NewDBMenuItem);
+
+        EditWorkoutButton.setText("Edit Workout");
+
+        DeleteWorkoutButton.setText("Delete Workout");
+
+        FileMenu.setText("File");
+
+        ConnectDBMenuItem.setText("Connect Database");
+        ConnectDBMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConnectDBMenuItemActionPerformed(evt);
+            }
+        });
+        FileMenu.add(ConnectDBMenuItem);
 
         BackupDBMenuItem.setText("Backup Database");
         BackupDBMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -85,11 +102,29 @@ public class Main extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(WorkoutScrollPane)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(AddWorkoutButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(EditWorkoutButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(DeleteWorkoutButton)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(AddWorkoutButton)
+                    .addComponent(EditWorkoutButton)
+                    .addComponent(DeleteWorkoutButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(WorkoutScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -100,18 +135,31 @@ public class Main extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_ExitMenuItemActionPerformed
 
-    private void NewDBMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewDBMenuItemActionPerformed
+    private void ConnectDBMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConnectDBMenuItemActionPerformed
         conn = DatabaseManager.getInstance();
-    }//GEN-LAST:event_NewDBMenuItemActionPerformed
+    }//GEN-LAST:event_ConnectDBMenuItemActionPerformed
 
     private void BackupDBMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackupDBMenuItemActionPerformed
-        // TODO add your handling code here:
+        conn.exportDatabase();
     }//GEN-LAST:event_BackupDBMenuItemActionPerformed
 
     private void UserInfoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UserInfoMenuItemActionPerformed
         UserInfo editUser = new UserInfo();
+        try {
+            Float currentValues = conn.getLastBodyWeightData();
+            editUser.setTextField(currentValues);
+        }catch(ArrayIndexOutOfBoundsException e){
+            ; // intentionally blank
+        }
         editUser.show();
+        conn.insertBodyWeight(editUser.getTextField());
+        editUser.dispose();
     }//GEN-LAST:event_UserInfoMenuItemActionPerformed
+
+    private void AddWorkoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddWorkoutButtonActionPerformed
+        ModifyWorkout mw = new ModifyWorkout();
+        mw.show();
+    }//GEN-LAST:event_AddWorkoutButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -149,12 +197,16 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AddWorkoutButton;
     private javax.swing.JMenuItem BackupDBMenuItem;
+    private javax.swing.JMenuItem ConnectDBMenuItem;
+    private javax.swing.JButton DeleteWorkoutButton;
     private javax.swing.JMenu EditMenu;
+    private javax.swing.JButton EditWorkoutButton;
     private javax.swing.JMenuItem ExitMenuItem;
     private javax.swing.JMenu FileMenu;
-    private javax.swing.JMenuItem NewDBMenuItem;
     private javax.swing.JMenuItem UserInfoMenuItem;
+    private javax.swing.JScrollPane WorkoutScrollPane;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }
