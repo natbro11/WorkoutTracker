@@ -5,8 +5,6 @@
 package com.drawingblanks.workouttracker;
 
 import main.java.com.drawingblanks.workouttracker.DatabaseManager;
-import main.java.com.drawingblanks.workouttracker.TwoArray;
-import java.util.Date;
 
 /**
  *
@@ -145,7 +143,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_BackupDBMenuItemActionPerformed
 
     private void UserInfoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UserInfoMenuItemActionPerformed
-        UserInfo editUser = new UserInfo();
+        UserInfo editUser = new UserInfo(conn);
         editUser.setVisible(true);
     }//GEN-LAST:event_UserInfoMenuItemActionPerformed
 

@@ -4,19 +4,26 @@
  */
 package com.drawingblanks.workouttracker;
 
+import main.java.com.drawingblanks.workouttracker.DatabaseManager;
 /**
  *
  * @author matt
  */
 public class UserInfo extends javax.swing.JFrame {
     
-    public Float userWeight;
-
+    public DatabaseManager dbm;
+    
     /**
      * Creates new form UserInfo
      */
     public UserInfo() {
         initComponents();
+    }
+    
+    public UserInfo(DatabaseManager cnxn){
+        initComponents();
+        dbm = cnxn;
+        WeightTextField.setText(dbm.getLastBodyWeightData().toString());
     }
 
     /**
@@ -87,8 +94,8 @@ public class UserInfo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void OkayButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OkayButtonActionPerformed
-        userWeight = Float.parseFloat(WeightTextField.getText());
-        this.setVisible(false);
+        dbm.insertBodyWeight(Float.parseFloat(WeightTextField.getText()));
+        this.dispose();
     }//GEN-LAST:event_OkayButtonActionPerformed
 
     private void CancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelButtonActionPerformed
@@ -130,14 +137,6 @@ public class UserInfo extends javax.swing.JFrame {
         });
     }
     
-    public void setTextField(Float data){
-        userWeight = data;
-        WeightTextField.setText(userWeight.toString());
-    }
-    
-    public Float getTextField(){
-        return userWeight;
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CancelButton;
