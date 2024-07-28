@@ -11,7 +11,7 @@ import main.java.com.drawingblanks.workouttracker.DatabaseManager;
  */
 public class UserInfo extends javax.swing.JFrame {
     
-    public DatabaseManager dbm;
+    private DatabaseManager dbm;
     
     /**
      * Creates new form UserInfo
