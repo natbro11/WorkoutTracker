@@ -4,6 +4,7 @@
  */
 package com.drawingblanks.workouttracker;
 
+import javax.swing.JOptionPane;
 import main.java.com.drawingblanks.workouttracker.DatabaseManager;
 /**
  *
@@ -94,7 +95,13 @@ public class UserInfo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void OkayButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OkayButtonActionPerformed
-        dbm.insertBodyWeight(Float.parseFloat(WeightTextField.getText()));
+        try {
+            dbm.insertBodyWeight(Float.parseFloat(WeightTextField.getText()));
+        }catch(NumberFormatException nfe){
+            JOptionPane.showMessageDialog(this, nfe.getMessage());
+        }catch(NullPointerException npe){
+            JOptionPane.showMessageDialog(this, npe.getMessage());
+        }
         this.dispose();
     }//GEN-LAST:event_OkayButtonActionPerformed
 
