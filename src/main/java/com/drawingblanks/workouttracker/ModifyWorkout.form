@@ -24,10 +24,11 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="ExerciseScrollPane" max="32767" attributes="0"/>
+                  <Component id="WeightScrollPane" max="32767" attributes="0"/>
+                  <Component id="CardioScrollPane" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
@@ -37,7 +38,7 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="DeleteWeightButton" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <Component id="AddCardioButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="EditCardioButton" min="-2" max="-2" attributes="0"/>
@@ -62,14 +63,16 @@
                   <Component id="DeleteWeightButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="WeightScrollPane" min="-2" pref="77" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="AddCardioButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="EditCardioButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="DeleteCardioButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="ExerciseScrollPane" pref="222" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="CardioScrollPane" min="-2" pref="100" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -111,7 +114,11 @@
         <Property name="text" type="java.lang.String" value="Delete Cardio"/>
       </Properties>
     </Component>
-    <Container class="javax.swing.JScrollPane" name="ExerciseScrollPane">
+    <Container class="javax.swing.JScrollPane" name="WeightScrollPane">
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+    </Container>
+    <Container class="javax.swing.JScrollPane" name="CardioScrollPane">
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
     </Container>

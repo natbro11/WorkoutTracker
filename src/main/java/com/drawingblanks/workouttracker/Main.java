@@ -139,7 +139,8 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_ConnectDBMenuItemActionPerformed
 
     private void BackupDBMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackupDBMenuItemActionPerformed
-        conn.exportDatabase();
+        if(conn != null)
+            conn.exportDatabase();
     }//GEN-LAST:event_BackupDBMenuItemActionPerformed
 
     private void UserInfoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UserInfoMenuItemActionPerformed

@@ -32,7 +32,8 @@ public class ModifyWorkout extends javax.swing.JFrame {
         AddCardioButton = new javax.swing.JButton();
         EditCardioButton = new javax.swing.JButton();
         DeleteCardioButton = new javax.swing.JButton();
-        ExerciseScrollPane = new javax.swing.JScrollPane();
+        WeightScrollPane = new javax.swing.JScrollPane();
+        CardioScrollPane = new javax.swing.JScrollPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Modify Exercise");
@@ -66,7 +67,8 @@ public class ModifyWorkout extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ExerciseScrollPane)
+                    .addComponent(WeightScrollPane)
+                    .addComponent(CardioScrollPane)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -93,13 +95,15 @@ public class ModifyWorkout extends javax.swing.JFrame {
                     .addComponent(EditWeightButton)
                     .addComponent(DeleteWeightButton))
                 .addGap(18, 18, 18)
+                .addComponent(WeightScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(AddCardioButton)
                     .addComponent(EditCardioButton)
                     .addComponent(DeleteCardioButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ExerciseScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(18, 18, 18)
+                .addComponent(CardioScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -153,10 +157,11 @@ public class ModifyWorkout extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddCardioButton;
     private javax.swing.JButton AddWeightButton;
+    private javax.swing.JScrollPane CardioScrollPane;
     private javax.swing.JButton DeleteCardioButton;
     private javax.swing.JButton DeleteWeightButton;
     private javax.swing.JButton EditCardioButton;
     private javax.swing.JButton EditWeightButton;
-    private javax.swing.JScrollPane ExerciseScrollPane;
+    private javax.swing.JScrollPane WeightScrollPane;
     // End of variables declaration//GEN-END:variables
 }
