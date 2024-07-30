@@ -150,7 +150,7 @@ public class Main extends javax.swing.JFrame {
 
     private void AddWorkoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddWorkoutButtonActionPerformed
         ModifyWorkout mw = new ModifyWorkout();
-        mw.show();
+        mw.setVisible(true);
     }//GEN-LAST:event_AddWorkoutButtonActionPerformed
 
     /**
