@@ -26,7 +26,7 @@ public class DatabaseManager {
 
     private static final String DB_FOLDER = "src/main/resources/database";
     private static final String BU_FOLDER = "src/main/resources/backup";
-    private static final String DB_File = "WorkoutTracker.db";
+    private static final String DB_FILE = "WorkoutTracker.db";
     private Connection conn;
 
     
@@ -47,7 +47,7 @@ public class DatabaseManager {
 	private void connect() {
 		System.out.println("DatabaseManager: Establishing Connection...");
 		try {
-			String databasePath = String.format("jdbc:sqlite:%s/%s", DB_FOLDER, DB_File);
+			String databasePath = String.format("jdbc:sqlite:%s/%s", DB_FOLDER, DB_FILE);
 			this.conn = DriverManager.getConnection(databasePath);
 			System.out.println("DatabaseManager: Connection Established");
 		} catch (SQLException e) {
@@ -102,7 +102,7 @@ public class DatabaseManager {
 	public void exportDatabase() {
 		System.out.println("DatabaseManager: Exporting Backup - Default");
 		try {
-			File databaseFile = new File(String.format("%s/%s", DB_FOLDER, DB_File));
+			File databaseFile = new File(String.format("%s/%s", DB_FOLDER, DB_FILE));
 			String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
 			File backupFile = new File(String.format("%s/WorkoutTracker_%s.db", BU_FOLDER, timestamp));
 			System.out.println("DatabaseManager: Saving Backup File");
@@ -118,7 +118,7 @@ public class DatabaseManager {
 		filename += ".db";
 		System.out.println("DatabaseManager: Exporting Backup - " + filename);
 		try {
-			File databaseFile = new File(String.format("%s/%s", DB_FOLDER, DB_File));
+			File databaseFile = new File(String.format("%s/%s", DB_FOLDER, DB_FILE));
 			File backupFile = new File(String.format("%s/%s", BU_FOLDER, filename));
 			System.out.println("DatabaseManager: Saving Backup File");
 			Files.copy(databaseFile.toPath(), backupFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
@@ -133,7 +133,7 @@ public class DatabaseManager {
 		System.out.println("DatabaseManager: Importing Backup - Recent");
 		try {
 			// load file locations
-			File databaseFile = new File(String.format("%s/%s", DB_FOLDER, DB_File));
+			File databaseFile = new File(String.format("%s/%s", DB_FOLDER, DB_FILE));
 			File backupFolder = new File(BU_FOLDER);
 			File[] backups = backupFolder.listFiles((dir, name) -> name.endsWith(".db"));
 			// if backups are not found, exit.
@@ -159,7 +159,7 @@ public class DatabaseManager {
 		filename += ".db";
 		System.out.println("DatabaseManager: Importing Backup - " + filename);
 		try {
-			File databaseFile = new File(String.format("%s/%s", DB_FOLDER, DB_File));
+			File databaseFile = new File(String.format("%s/%s", DB_FOLDER, DB_FILE));
 			File backupFolder = new File(BU_FOLDER);
 			File backupFile = new File(backupFolder, filename);
 			if (!backupFile.exists()) {
@@ -180,7 +180,7 @@ public class DatabaseManager {
 	public void deleteDatabase() {
 		System.out.println("DatabaseManager: Deleting Database...");
 		disconnect();
-		File databaseFile = new File(DB_FOLDER, DB_File);
+		File databaseFile = new File(DB_FOLDER, DB_FILE);
 		databaseFile.delete();
 		System.out.println("DatabaseManager: Database Deleted");
 		connect();
