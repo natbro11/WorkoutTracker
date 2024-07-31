@@ -3,7 +3,7 @@
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
-    <Property name="title" type="java.lang.String" value="Modify Weight"/>
+    <Property name="title" type="java.lang.String" value="New Cardio Exercise"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -25,19 +25,15 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="OkayButton" min="-2" max="-2" attributes="0"/>
-                  <Component id="MassLabel" min="-2" max="-2" attributes="0"/>
-                  <Component id="RepsLabel" min="-2" max="-2" attributes="0"/>
-                  <Component id="ExerciseLabel" min="-2" max="-2" attributes="0"/>
+                  <Component id="SaveButton" min="-2" max="-2" attributes="0"/>
+                  <Component id="CardioExerciseLabel" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="RepsTextField" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="MassTextField" min="-2" max="-2" attributes="0"/>
+                  <Component id="CardioExerciseTextField" min="-2" max="-2" attributes="0"/>
                   <Component id="CancelButton" min="-2" max="-2" attributes="0"/>
-                  <Component id="ExerciseComboBox" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -46,61 +42,39 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="ExerciseLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="ExerciseComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="CardioExerciseLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="CardioExerciseTextField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="RepsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="RepsTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="MassLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="MassTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="OkayButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="SaveButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="CancelButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="18" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="ExerciseLabel">
+    <Component class="javax.swing.JLabel" name="CardioExerciseLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Exercise Name"/>
+        <Property name="text" type="java.lang.String" value="Cardio Exercise"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="RepsLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Reps"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="MassLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Mass"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="RepsTextField">
+    <Component class="javax.swing.JTextField" name="CardioExerciseTextField">
       <Properties>
         <Property name="columns" type="int" value="10"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="MassTextField">
+    <Component class="javax.swing.JButton" name="SaveButton">
       <Properties>
-        <Property name="columns" type="int" value="10"/>
+        <Property name="text" type="java.lang.String" value="Save"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="OkayButton">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Okay"/>
-      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SaveButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="CancelButton">
       <Properties>
@@ -109,11 +83,6 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CancelButtonActionPerformed"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="ExerciseComboBox">
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

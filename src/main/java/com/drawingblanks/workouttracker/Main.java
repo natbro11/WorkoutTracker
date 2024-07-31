@@ -29,6 +29,7 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem2 = new javax.swing.JMenuItem();
         AddWorkoutButton = new javax.swing.JButton();
         EditWorkoutButton = new javax.swing.JButton();
         DeleteWorkoutButton = new javax.swing.JButton();
@@ -40,6 +41,10 @@ public class Main extends javax.swing.JFrame {
         ExitMenuItem = new javax.swing.JMenuItem();
         EditMenu = new javax.swing.JMenu();
         UserInfoMenuItem = new javax.swing.JMenuItem();
+        AddWeightExerciseMenuItem = new javax.swing.JMenuItem();
+        AddCardioExerciseMenuItem = new javax.swing.JMenuItem();
+
+        jMenuItem2.setText("jMenuItem2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("WorkoutTracker");
@@ -92,6 +97,22 @@ public class Main extends javax.swing.JFrame {
             }
         });
         EditMenu.add(UserInfoMenuItem);
+
+        AddWeightExerciseMenuItem.setText("Add Weight Exercise");
+        AddWeightExerciseMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddWeightExerciseMenuItemActionPerformed(evt);
+            }
+        });
+        EditMenu.add(AddWeightExerciseMenuItem);
+
+        AddCardioExerciseMenuItem.setText("Add Cardio Exercise");
+        AddCardioExerciseMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddCardioExerciseMenuItemActionPerformed(evt);
+            }
+        });
+        EditMenu.add(AddCardioExerciseMenuItem);
 
         jMenuBar1.add(EditMenu);
 
@@ -153,6 +174,16 @@ public class Main extends javax.swing.JFrame {
         mw.setVisible(true);
     }//GEN-LAST:event_AddWorkoutButtonActionPerformed
 
+    private void AddWeightExerciseMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddWeightExerciseMenuItemActionPerformed
+        NewWeightExercise x = new NewWeightExercise(conn);
+        x.setVisible(true);
+    }//GEN-LAST:event_AddWeightExerciseMenuItemActionPerformed
+
+    private void AddCardioExerciseMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddCardioExerciseMenuItemActionPerformed
+        NewCardioExercise x = new NewCardioExercise(conn);
+        x.setVisible(true);
+    }//GEN-LAST:event_AddCardioExerciseMenuItemActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -189,6 +220,8 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem AddCardioExerciseMenuItem;
+    private javax.swing.JMenuItem AddWeightExerciseMenuItem;
     private javax.swing.JButton AddWorkoutButton;
     private javax.swing.JMenuItem BackupDBMenuItem;
     private javax.swing.JMenuItem ConnectDBMenuItem;
@@ -200,5 +233,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuItem UserInfoMenuItem;
     private javax.swing.JScrollPane WorkoutScrollPane;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem2;
     // End of variables declaration//GEN-END:variables
 }

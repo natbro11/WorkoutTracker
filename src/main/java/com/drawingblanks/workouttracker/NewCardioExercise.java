@@ -4,17 +4,24 @@
  */
 package com.drawingblanks.workouttracker;
 
+import main.java.com.drawingblanks.workouttracker.DatabaseManager;
 /**
  *
- * @author matt
+ * @author Matt
  */
-public class ModifyCardio extends javax.swing.JFrame {
+public class NewCardioExercise extends javax.swing.JFrame {
 
+    private DatabaseManager dbm;
     /**
-     * Creates new form ModifyCardio
+     * Creates new form NewCardioExercise
      */
-    public ModifyCardio() {
+    public NewCardioExercise() {
         initComponents();
+    }
+    
+    public NewCardioExercise(DatabaseManager cnxn){
+        initComponents();
+        this.dbm = cnxn;
     }
 
     /**
@@ -27,28 +34,23 @@ public class ModifyCardio extends javax.swing.JFrame {
     private void initComponents() {
 
         CardioExerciseLabel = new javax.swing.JLabel();
-        DistanceLabel = new javax.swing.JLabel();
-        DistanceTextField = new javax.swing.JTextField();
-        TimeLabel = new javax.swing.JLabel();
-        TimeTextField = new javax.swing.JTextField();
-        OkayButton = new javax.swing.JButton();
+        CardioExerciseTextField = new javax.swing.JTextField();
+        SaveButton = new javax.swing.JButton();
         CancelButton = new javax.swing.JButton();
-        ExerciseComboBox = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Modify Cardio");
+        setTitle("New Cardio Exercise");
 
-        CardioExerciseLabel.setText("Exercise Name");
+        CardioExerciseLabel.setText("Cardio Exercise");
 
-        DistanceLabel.setText("Distance");
+        CardioExerciseTextField.setColumns(10);
 
-        DistanceTextField.setColumns(10);
-
-        TimeLabel.setText("Time (s)");
-
-        TimeTextField.setColumns(10);
-
-        OkayButton.setText("Okay");
+        SaveButton.setText("Save");
+        SaveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SaveButtonActionPerformed(evt);
+            }
+        });
 
         CancelButton.setText("Cancel");
         CancelButton.addActionListener(new java.awt.event.ActionListener() {
@@ -62,47 +64,40 @@ public class ModifyCardio extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(83, 83, 83)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(OkayButton)
-                    .addComponent(TimeLabel)
-                    .addComponent(DistanceLabel)
+                    .addComponent(SaveButton)
                     .addComponent(CardioExerciseLabel))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(DistanceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TimeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CancelButton)
-                    .addComponent(ExerciseComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CardioExerciseTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CancelButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(13, 13, 13)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CardioExerciseLabel)
-                    .addComponent(ExerciseComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CardioExerciseTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(DistanceLabel)
-                    .addComponent(DistanceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TimeLabel)
-                    .addComponent(TimeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(OkayButton)
+                    .addComponent(SaveButton)
                     .addComponent(CancelButton))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelButtonActionPerformed
+    private void SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveButtonActionPerformed
+        dbm.insertCardioExercise(CardioExerciseTextField.getText());
         this.dispose();
+    }//GEN-LAST:event_SaveButtonActionPerformed
+
+    private void CancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelButtonActionPerformed
+       this.dispose();
     }//GEN-LAST:event_CancelButtonActionPerformed
 
     /**
@@ -122,20 +117,20 @@ public class ModifyCardio extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ModifyCardio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewCardioExercise.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ModifyCardio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewCardioExercise.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ModifyCardio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewCardioExercise.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ModifyCardio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewCardioExercise.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ModifyCardio().setVisible(true);
+                new NewCardioExercise().setVisible(true);
             }
         });
     }
@@ -143,11 +138,7 @@ public class ModifyCardio extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CancelButton;
     private javax.swing.JLabel CardioExerciseLabel;
-    private javax.swing.JLabel DistanceLabel;
-    private javax.swing.JTextField DistanceTextField;
-    private javax.swing.JComboBox<String> ExerciseComboBox;
-    private javax.swing.JButton OkayButton;
-    private javax.swing.JLabel TimeLabel;
-    private javax.swing.JTextField TimeTextField;
+    private javax.swing.JTextField CardioExerciseTextField;
+    private javax.swing.JButton SaveButton;
     // End of variables declaration//GEN-END:variables
 }
