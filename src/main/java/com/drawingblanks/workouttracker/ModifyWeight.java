@@ -26,19 +26,19 @@ public class ModifyWeight extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        ExerciseLabel = new javax.swing.JLabel();
+        WeightExerciseLabel = new javax.swing.JLabel();
         RepsLabel = new javax.swing.JLabel();
         MassLabel = new javax.swing.JLabel();
         RepsTextField = new javax.swing.JTextField();
         MassTextField = new javax.swing.JTextField();
         OkayButton = new javax.swing.JButton();
         CancelButton = new javax.swing.JButton();
-        ExerciseComboBox = new javax.swing.JComboBox<>();
+        WeightExerciseComboBox = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Modify Weight");
 
-        ExerciseLabel.setText("Exercise Name");
+        WeightExerciseLabel.setText("Exercise Name");
 
         RepsLabel.setText("Reps");
 
@@ -67,13 +67,13 @@ public class ModifyWeight extends javax.swing.JFrame {
                     .addComponent(OkayButton)
                     .addComponent(MassLabel)
                     .addComponent(RepsLabel)
-                    .addComponent(ExerciseLabel))
+                    .addComponent(WeightExerciseLabel))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(RepsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(MassTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CancelButton)
-                    .addComponent(ExerciseComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(WeightExerciseComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -81,8 +81,8 @@ public class ModifyWeight extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ExerciseLabel)
-                    .addComponent(ExerciseComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(WeightExerciseLabel)
+                    .addComponent(WeightExerciseComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(RepsLabel)
@@ -142,12 +142,12 @@ public class ModifyWeight extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CancelButton;
-    private javax.swing.JComboBox<String> ExerciseComboBox;
-    private javax.swing.JLabel ExerciseLabel;
     private javax.swing.JLabel MassLabel;
     private javax.swing.JTextField MassTextField;
     private javax.swing.JButton OkayButton;
     private javax.swing.JLabel RepsLabel;
     private javax.swing.JTextField RepsTextField;
+    private javax.swing.JComboBox<String> WeightExerciseComboBox;
+    private javax.swing.JLabel WeightExerciseLabel;
     // End of variables declaration//GEN-END:variables
 }

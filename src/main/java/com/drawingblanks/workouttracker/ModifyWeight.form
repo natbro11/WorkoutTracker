@@ -30,14 +30,14 @@
                   <Component id="OkayButton" min="-2" max="-2" attributes="0"/>
                   <Component id="MassLabel" min="-2" max="-2" attributes="0"/>
                   <Component id="RepsLabel" min="-2" max="-2" attributes="0"/>
-                  <Component id="ExerciseLabel" min="-2" max="-2" attributes="0"/>
+                  <Component id="WeightExerciseLabel" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="RepsTextField" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="MassTextField" min="-2" max="-2" attributes="0"/>
                   <Component id="CancelButton" min="-2" max="-2" attributes="0"/>
-                  <Component id="ExerciseComboBox" min="-2" max="-2" attributes="0"/>
+                  <Component id="WeightExerciseComboBox" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -48,8 +48,8 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="ExerciseLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="ExerciseComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="WeightExerciseLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="WeightExerciseComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -72,7 +72,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="ExerciseLabel">
+    <Component class="javax.swing.JLabel" name="WeightExerciseLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Exercise Name"/>
       </Properties>
@@ -110,7 +110,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CancelButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JComboBox" name="ExerciseComboBox">
+    <Component class="javax.swing.JComboBox" name="WeightExerciseComboBox">
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
