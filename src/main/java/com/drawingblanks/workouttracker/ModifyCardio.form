@@ -37,7 +37,7 @@
                   <Component id="DistanceTextField" min="-2" max="-2" attributes="0"/>
                   <Component id="TimeTextField" min="-2" max="-2" attributes="0"/>
                   <Component id="CancelButton" min="-2" max="-2" attributes="0"/>
-                  <Component id="ExerciseComboBox" min="-2" max="-2" attributes="0"/>
+                  <Component id="CardioExerciseComboBox" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -49,7 +49,7 @@
               <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="CardioExerciseLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="ExerciseComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="CardioExerciseComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -79,7 +79,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="DistanceLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Distance"/>
+        <Property name="text" type="java.lang.String" value="Distance (mi)"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="DistanceTextField">
@@ -110,7 +110,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CancelButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JComboBox" name="ExerciseComboBox">
+    <Component class="javax.swing.JComboBox" name="CardioExerciseComboBox">
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>

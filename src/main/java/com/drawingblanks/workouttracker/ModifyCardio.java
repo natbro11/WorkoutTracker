@@ -33,14 +33,14 @@ public class ModifyCardio extends javax.swing.JFrame {
         TimeTextField = new javax.swing.JTextField();
         OkayButton = new javax.swing.JButton();
         CancelButton = new javax.swing.JButton();
-        ExerciseComboBox = new javax.swing.JComboBox<>();
+        CardioExerciseComboBox = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Modify Cardio");
 
         CardioExerciseLabel.setText("Exercise Name");
 
-        DistanceLabel.setText("Distance");
+        DistanceLabel.setText("Distance (mi)");
 
         DistanceTextField.setColumns(10);
 
@@ -73,7 +73,7 @@ public class ModifyCardio extends javax.swing.JFrame {
                     .addComponent(DistanceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TimeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CancelButton)
-                    .addComponent(ExerciseComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CardioExerciseComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -82,7 +82,7 @@ public class ModifyCardio extends javax.swing.JFrame {
                 .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CardioExerciseLabel)
-                    .addComponent(ExerciseComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CardioExerciseComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(DistanceLabel)
@@ -142,10 +142,10 @@ public class ModifyCardio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CancelButton;
+    private javax.swing.JComboBox<String> CardioExerciseComboBox;
     private javax.swing.JLabel CardioExerciseLabel;
     private javax.swing.JLabel DistanceLabel;
     private javax.swing.JTextField DistanceTextField;
-    private javax.swing.JComboBox<String> ExerciseComboBox;
     private javax.swing.JButton OkayButton;
     private javax.swing.JLabel TimeLabel;
     private javax.swing.JTextField TimeTextField;
