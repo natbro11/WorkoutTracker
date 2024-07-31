@@ -98,9 +98,9 @@ public class UserInfo extends javax.swing.JFrame {
         try {
             dbm.insertBodyWeight(Float.parseFloat(WeightTextField.getText()));
         }catch(NumberFormatException nfe){
-            JOptionPane.showMessageDialog(this, nfe.getMessage());
+            JOptionPane.showMessageDialog(this, nfe.getMessage(), "Invalid number", JOptionPane.ERROR_MESSAGE);
         }catch(NullPointerException npe){
-            JOptionPane.showMessageDialog(this, npe.getMessage());
+            JOptionPane.showMessageDialog(this, npe.getMessage(), "Invalid number", JOptionPane.ERROR_MESSAGE);
         }
         this.dispose();
     }//GEN-LAST:event_OkayButtonActionPerformed
