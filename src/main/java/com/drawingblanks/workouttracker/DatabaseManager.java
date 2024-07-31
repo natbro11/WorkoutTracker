@@ -59,9 +59,9 @@ public class DatabaseManager {
 	private void createTables() {
 		String[] createTableStatements = {
 				"CREATE TABLE IF NOT EXISTS body_weight (body_weight_id INTEGER PRIMARY KEY AUTOINCREMENT, time DATETIME DEFAULT (datetime('now', 'localtime')) UNIQUE, body_weight FLOAT NOT NULL);",
-				"CREATE TABLE IF NOT EXISTS workout (workout_id INTEGER PRIMARY KEY AUTOINCREMENT, time DATETIME DEFAULT (datetime('now', 'localtime')), set_count INTEGER DEFAULT 0);",
-				"CREATE TABLE IF NOT EXISTS weight_exercise (weight_exercise_id INTEGER PRIMARY KEY AUTOINCREMENT, weight_exercise_name TEXT NOT NULL UNIQUE, set_count INTEGER DEFAULT 0);",
-				"CREATE TABLE IF NOT EXISTS cardio_exercise (cardio_exercise_id INTEGER PRIMARY KEY AUTOINCREMENT, cardio_exercise_name TEXT NOT NULL UNIQUE, set_count INTEGER DEFAULT 0);",
+				"CREATE TABLE IF NOT EXISTS workout (workout_id INTEGER PRIMARY KEY AUTOINCREMENT, time DATETIME DEFAULT (datetime('now', 'localtime')));",
+				"CREATE TABLE IF NOT EXISTS weight_exercise (weight_exercise_id INTEGER PRIMARY KEY AUTOINCREMENT, weight_exercise_name TEXT NOT NULL UNIQUE);",
+				"CREATE TABLE IF NOT EXISTS cardio_exercise (cardio_exercise_id INTEGER PRIMARY KEY AUTOINCREMENT, cardio_exercise_name TEXT NOT NULL UNIQUE);",
 				"CREATE TABLE IF NOT EXISTS weight_set (weight_set_id INTEGER PRIMARY KEY AUTOINCREMENT, weight_exercise_id INTEGER, workout_id INTEGER, mass FLOAT NOT NULL, reps INT NOT NULL, FOREIGN KEY (workout_id) REFERENCES workout(workout_id) ON DELETE CASCADE, FOREIGN KEY (weight_exercise_id) REFERENCES weight_exercise(weight_exercise_id) ON DELETE CASCADE);",
 				"CREATE TABLE IF NOT EXISTS cardio_set (cardio_set_id INTEGER PRIMARY KEY AUTOINCREMENT, cardio_exercise_id INTEGER, workout_id INTEGER, dist FLOAT NOT NULL, secs INT NOT NULL, FOREIGN KEY (workout_id) REFERENCES workout(workout_id) ON DELETE CASCADE, FOREIGN KEY (cardio_exercise_id) REFERENCES cardio_exercise(cardio_exercise_id) ON DELETE CASCADE);",
 				"CREATE TRIGGER IF NOT EXISTS increment_weight_set_count AFTER INSERT ON weight_set BEGIN UPDATE workout SET set_count = set_count + 1 WHERE workout_id = NEW.workout_id; END;",
