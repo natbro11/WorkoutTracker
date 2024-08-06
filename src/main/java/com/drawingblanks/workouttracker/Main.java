@@ -33,7 +33,8 @@ public class Main extends javax.swing.JFrame {
         AddWorkoutButton = new javax.swing.JButton();
         EditWorkoutButton = new javax.swing.JButton();
         DeleteWorkoutButton = new javax.swing.JButton();
-        WorkoutScrollPane = new javax.swing.JScrollPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        WorkoutList = new javax.swing.JList<>();
         jMenuBar1 = new javax.swing.JMenuBar();
         FileMenu = new javax.swing.JMenu();
         ConnectDBMenuItem = new javax.swing.JMenuItem();
@@ -59,6 +60,8 @@ public class Main extends javax.swing.JFrame {
         EditWorkoutButton.setText("Edit Workout");
 
         DeleteWorkoutButton.setText("Delete Workout");
+
+        jScrollPane1.setViewportView(WorkoutList);
 
         FileMenu.setText("File");
 
@@ -124,15 +127,16 @@ public class Main extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(WorkoutScrollPane)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(AddWorkoutButton)
                         .addGap(18, 18, 18)
                         .addComponent(EditWorkoutButton)
                         .addGap(18, 18, 18)
-                        .addComponent(DeleteWorkoutButton)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(DeleteWorkoutButton)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,8 +146,8 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(AddWorkoutButton)
                     .addComponent(EditWorkoutButton)
                     .addComponent(DeleteWorkoutButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(WorkoutScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -157,6 +161,7 @@ public class Main extends javax.swing.JFrame {
 
     private void ConnectDBMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConnectDBMenuItemActionPerformed
         conn = DatabaseManager.getInstance();
+        WorkoutList.setListData(conn.toStringWorkout().splitWithDelimiters("\n", WIDTH));
     }//GEN-LAST:event_ConnectDBMenuItemActionPerformed
 
     private void BackupDBMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackupDBMenuItemActionPerformed
@@ -231,8 +236,9 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuItem ExitMenuItem;
     private javax.swing.JMenu FileMenu;
     private javax.swing.JMenuItem UserInfoMenuItem;
-    private javax.swing.JScrollPane WorkoutScrollPane;
+    private javax.swing.JList<String> WorkoutList;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
