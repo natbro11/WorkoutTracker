@@ -4,19 +4,25 @@
  */
 package com.drawingblanks.workouttracker;
 
+import main.java.com.drawingblanks.workouttracker.DatabaseManager;
 /**
  *
  * @author matt
  */
 public class ModifyWorkout extends javax.swing.JFrame {
 
+    DatabaseManager conn;
     /**
      * Creates new form ModifyWorkout
      */
     public ModifyWorkout() {
         initComponents();
     }
-
+    
+    public ModifyWorkout(DatabaseManager cnxn) {
+        initComponents();
+        this.conn = cnxn;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -116,13 +122,13 @@ public class ModifyWorkout extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AddWeightButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddWeightButtonActionPerformed
-        ModifyWeight mw = new ModifyWeight();
-        mw.show();
+        ModifyWeight mw = new ModifyWeight(conn);
+        mw.setVisible(true);
     }//GEN-LAST:event_AddWeightButtonActionPerformed
 
     private void AddCardioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddCardioButtonActionPerformed
-        ModifyCardio mc = new ModifyCardio();
-        mc.show();
+        ModifyCardio mc = new ModifyCardio(conn);
+        mc.setVisible(true);
     }//GEN-LAST:event_AddCardioButtonActionPerformed
 
     /**

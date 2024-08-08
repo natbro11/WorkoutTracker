@@ -4,18 +4,29 @@
  */
 package com.drawingblanks.workouttracker;
 
+import main.java.com.drawingblanks.workouttracker.DatabaseManager;
 /**
  *
  * @author matt
  */
 public class ModifyWeight extends javax.swing.JFrame {
 
+    DatabaseManager conn;
     /**
      * Creates new form ModifyWeight
      */
     public ModifyWeight() {
         initComponents();
     }
+    
+    public ModifyWeight(DatabaseManager cnxn) {
+        initComponents();
+        this.conn = cnxn;
+        for(String workout: this.conn.getWorkout("weight_exercise", "weight_exercise_name")){
+            this.WeightExerciseComboBox.addItem(workout);
+        }
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.

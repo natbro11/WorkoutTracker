@@ -175,7 +175,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_UserInfoMenuItemActionPerformed
 
     private void AddWorkoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddWorkoutButtonActionPerformed
-        ModifyWorkout mw = new ModifyWorkout();
+        ModifyWorkout mw = new ModifyWorkout(conn);
         mw.setVisible(true);
     }//GEN-LAST:event_AddWorkoutButtonActionPerformed
 

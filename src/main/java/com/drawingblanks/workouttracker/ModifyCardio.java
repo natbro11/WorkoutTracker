@@ -4,17 +4,27 @@
  */
 package com.drawingblanks.workouttracker;
 
+import main.java.com.drawingblanks.workouttracker.DatabaseManager;
 /**
  *
  * @author matt
  */
 public class ModifyCardio extends javax.swing.JFrame {
 
+    DatabaseManager conn;
     /**
      * Creates new form ModifyCardio
      */
     public ModifyCardio() {
         initComponents();
+    }
+    
+    public ModifyCardio(DatabaseManager cnxn){
+        initComponents();
+        this.conn = cnxn;
+        for(String workout: this.conn.getWorkout("cardio_exercise", "cardio_exercise_name")){
+            this.CardioExerciseComboBox.addItem(workout);
+        }
     }
 
     /**
