@@ -581,4 +581,18 @@ public class DatabaseManager {
 		}
 		return sb.toString();	   	
     }
+        
+    public List<String> getWorkout(String table, String column){
+        List<String> workouts = new ArrayList<String>();
+        try {
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT " + column + " FROM " + table + ";");
+            while(rs.next()) {
+                workouts.add(rs.getString(column));
+            }
+        } catch (SQLException e) {
+                System.out.println(e.getMessage());
+        }
+        return workouts;
+    }
 }
